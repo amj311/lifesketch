@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=La+Belle+Aurore&display=swap');
+
+:root {
+    --blue: skyblue;
+}
+
 ::-webkit-scrollbar {
     width: 1em;
     height: 1em;
@@ -8,7 +14,7 @@
     padding: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #fdfdfd;
+    background: #fafafa;
 }
 ::-webkit-scrollbar-track {
     background: #efefef;
@@ -75,7 +81,7 @@ body {
     border-top: 1px solid #00000033;
     width: 100%;
     line-height: 2em;
-    font-size: 1.3em;
+    font-size: 1.2em;
     background: #0000000a;
 }
 div#flatLine {
@@ -93,18 +99,18 @@ div#flatLine {
 }
 
 .eventPos {
-    color: #00000055;
+    color: #00000033;
     position: absolute;
     bottom: 0%;
     border-left: 1px solid;
-    width: 5px;
+    width: .5em;
     z-index: 1;
 }
 .eventPos:not(.ext) {
-    min-height: calc(14vh + 2em);
+    min-height: calc(17% + 15vh);
 }
 .eventPos:hover {
-    color: skyblue;
+    color: var(--blue);
     border-left-width: 2px;
     z-index: 10;
 }
@@ -129,7 +135,7 @@ div#flatLine {
 }
 
 .card > * {
-    margin: .3em;
+    margin: .5em;
 }
 .image {
     position: relative;
@@ -175,36 +181,68 @@ div#flatLine {
     display: block;
 }
 
-.eventPos .info .title {
+.card .info .title {
     font-weight: bold;
     font-size: 1.1em;
 }
 
+.card .openRecord {
+    color: #000;
+    background: #fff;
+    width: 2em;
+    line-height: 2em;
+    font-size: 1.2em;
+    text-align: center;
+    border: 1px solid #00000033;
+    cursor: pointer;
+    display: none;
+}
+.openRecord:hover {
+    background: #f3f3f3;
+}
+.eventPos:hover .openRecord {
+    display: block;
+}
+.openRecord::before {
+    content: '📜';
+}
 
 
 
-div#timeline-wrapper #controls {
+div#timeline-wrapper #controls > div {
     position: absolute;
-    top: .5em;
-    left: .5em;
+    padding: .5em;
+    top: 0;
+}
+
+#addEventBox {
+    right: 0;
 }
 
 div#controls .btn {
     background: #fff;
     box-shadow: 0 0 3px;
     margin: .5em;
-    border-radius: 20%;
+    border-radius: .2em;
     text-align: center;
     line-height: 1.5em;
-    width: 1.5em;
     cursor: pointer;
+    padding: .5em;
+    user-select: none;
+}
+
+div#controls .btn.zoom {
+    width: 1.5em;
+    padding: 0;
 }
 
 div#zoomIn::before {
     content: '+';
 }
 
-div#zoomOut::before {content: '-';}
+div#zoomOut::before {
+    content: '-';
+}
 
 
 
@@ -216,7 +254,7 @@ div#zoomOut::before {content: '-';}
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #00000055;
+    background: #00000088;
     z-index: 50;
 }
 #screen {
@@ -225,16 +263,16 @@ div#zoomOut::before {content: '-';}
     height: 100%;
     width: 100%;
     padding: 2em;
-    cursor: help;
+    filter: drop-shadow(0 0 5px #000000aa);
 }
 #imageBox {
     position: relative;
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 5px #000000aa);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: help;
 }
 #subs {
     position: absolute;
@@ -246,7 +284,7 @@ div#zoomOut::before {content: '-';}
     font-size: 1.2em;
 }
 
-#subs .info .title {
+#subs .title {
     font-weight: bold;
     font-size: 1.5em;
 }
@@ -263,6 +301,51 @@ div#zoomOut::before {content: '-';}
 }
 
 
+/* Record Viewer */
+#recordBox {
+    font-family: 'La Belle Aurore', cursive;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 0 1.5em;
+}
+
+#recordBox::-webkit-scrollbar {
+    width: .8em;
+}
+#recordBox::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border: none;
+}
+#recordBox::-webkit-scrollbar-track {
+    background: transparent;
+    border: none;
+}
+
+#recordBox .record {
+    margin: 3em auto;
+    max-width: 700px;
+    padding: 1.6em;
+    font-size: 1.6em;
+    border-radius: .2em;
+    color: #655640;
+    box-shadow: inset 0 0em 1em #a05900aa, 0 0 0 #000;
+    background: beige;
+    background-image: url('images/parch_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1);
+    transition: 300ms;
+}
+
+#recordBox .record.focus {
+    box-shadow: inset 0 0 0 #000, 0 0 .5em #fff;
+    transform: scale(1.02);
+}
+
+.record .date {
+    font-weight: bold;
+}
 
 /* QUIZ ALL STYLES */
 .quizAll .info {

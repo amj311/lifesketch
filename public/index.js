@@ -10,21 +10,57 @@ var app = new Vue ({
         zoomTimeout: false,
         isQuizAll: false,
         coverImg: true,
+        theaterMode: "img",
         theaterOn: false,
         subsOn: true,
         theaterData: {},
+        recordsHTML: null,
+        MONTH: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"],
     },
 
     created() {
         this.gallery = galleryData;
+
+        fetch('records.html')
+            .then( res => {return res.text()})
+            .then( html => { app.recordsHTML = html })
     },
 
     methods: {
         setTheaterImage(obj) {
+            this.theaterMode = 'img'
             obj.bgSrc = `background-image: url(${obj.img})`;
             this.theaterData = obj;
 
+            this.theaterData.subHTML = `
+                <div class="title">${obj.name}</div>
+                <div class="artist">${obj.artist}</div>
+                <div class="period">${obj.period}</div>    
+                <div class="year">${obj.year}</div>
+            `;
+
             this.openTheater();
+        },
+
+        setTheaterRecord(obj) {
+            this.theaterMode = 'rec';
+            this.theaterData = {}
+
+            
+            this.openTheater();
+
+            if (obj) {
+                let record = document.getElementById(obj.recId)
+                console.log(record)
+
+                setTimeout( function(){ app.scrollToEl(record) }, 10)
+            }
+
+        },
+        scrollToEl(el){
+            el.classList.add('focus')
+            el.scrollIntoView({behavior: "smooth", block: "center", inline: "center"})
+            setTimeout( function(){ el.classList.remove('focus') }, 2000)
         },
 
         openTheater() {
@@ -93,7 +129,11 @@ var app = new Vue ({
                 obj.netPos = yearPos + monthPos + dayPos;
                 obj.styles = `left: ${piece.netPos}rem; height: ${piece.pos}%`;
                 obj.classes = `art-pos ${piece.loc}`;
-                obj.idString = `piece_${obj.id}`
+                obj.idString = `piece_${array.length}`
+
+                obj.dateFormat = function() {
+                    
+                }
 
                 array.push(obj)
             })

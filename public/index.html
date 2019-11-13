@@ -42,7 +42,7 @@
             </div>
 
             <div id="gallery">
-                <div v-for="event in galleryEls" :id="event.idString" :class="{eventPos: true, hasImg: event.img, ext: event.loc === 'ext'}" :style="event.styles">
+                <div v-for="event in galleryEls" :id="event.idString" :class="{eventPos: true, hasImg: event.img, ext: event.type === 'ext'}" :style="event.styles">
                     <div class="card">
                         <div v-if="event.img" class="image">
                             <img :src="event.img" :alt="event.name">
@@ -50,12 +50,11 @@
                         </div>
                         <div class="info">
                             <div class="title">{{event.name}}</div>
-                            <div class="details">
-                                <div class="artist">{{event.artist}}</div>
-                                <div class="period">{{event.period}}</div>    
-                                <div class="year">{{event.year}}</div>
-                            </div>    
+                            <div class="details">    
+                                <div class="date">{{MONTH[event.month]}}<span v-if="event.day != 0"> {{event.day}}</span>, {{event.year}}</div>
+                            </div>
                         </div>
+                        <div v-if="event.recId" class="openRecord" @click="setTheaterRecord(event)"></div>
                     </div>
                 </div>
             </div>
@@ -63,8 +62,13 @@
         </div>
     
         <div id="controls">
-            <div id="zoomIn" @click="changeEraZoom(.25)" class="btn"></div>
-            <div id="zoomOut" @click="changeEraZoom(-.25)" class="btn"></div>
+            <div id="zoomBox">
+                <div id="zoomIn" @click="changeEraZoom(.25)" class="btn zoom"></div>
+                <div id="zoomOut" @click="changeEraZoom(-.25)" class="btn zoom"></div>            
+            </div>
+            <div id="addEventBox">
+                <div id="addEvent" class="btn">+ Create Event</div>
+            </div>
         </div>
     </div>
 
@@ -76,17 +80,13 @@
 
     <div v-show="theaterOn" id="theater">
         <div id="screen" @click="toggleSubs">
-            <div v-show="theaterData.img" id="imageBox" :style="theaterData.bgSrc"></div>
+            <div v-if="theaterMode == 'img'" id="imageBox" :style="theaterData.bgSrc"></div>
+            <div v-show="theaterMode == 'rec'" id="recordBox">
+                <div id="records" v-html="recordsHTML"></div>
+            </div>
         </div>
-        <div id="subs" v-show="subsOn">
-                <div v-show="theaterData.img" id="imageInfo">
-                    <div class="info">
-                        <div class="title">{{theaterData.name}}</div>
-                        <div class="artist">{{theaterData.artist}}</div>
-                        <div class="period">{{theaterData.period}}</div>    
-                        <div class="year">{{theaterData.year}}</div>    
-                    </div>
-                </div>
+        <div id="subs" v-if="theaterData.subHTML" v-show="subsOn">
+            <div id="subHTML" v-html="theaterData.subHTML"></div>
         </div>
         <div id="exitTheater" @click="closeTheater">&times;</div>
     </div>

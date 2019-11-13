@@ -15,26 +15,35 @@ const PERIODS = {
 
 var galleryData = [
     {
+        "name":"Birth of Robert Harris Jr.",
+        "year":1807,
+        "month":11,
+        "day":26,
+        "loc": "Gloucester, Gloucestershire, UK",
+        "recId": 'earlyYears',
+        "type":"int",
+        "pos":25,
+        "img":null,
+    },
+    {
         "name":"Elevation of the Cross",
-        "artist":"Rubens",
         "year":1810,
         "month":0,
         "day":0,
-        "loc":"int",
+        "type":"int",
         "pos":50,
         "img":"https://o.quizlet.com/i/sgB7SKqS15aXFivmVHuUzg.jpg",
         "period":"Northern Baroque",
-        "id":46},
+    },
     {
         "name":"Return of the Prodigal Son",
         "artist":"Rembrant van Rijn",
         "year":1802,
         "month":2,
         "day":20,
-        "loc":"ext",
+        "type":"ext",
         "pos":40,
         "img":null,
         "period":"Northern Baroque",
-        "id":47
     }
 ]
