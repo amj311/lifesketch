@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="app"  :class="{ quizAll: isQuizAll}">
-    <div id="time_scroll">
+    <!-- <div id="time_scroll">
         <h1 style="opacity:.25">ARTHC Timeline</h1>
         <div id="time_flow">
             <div id="flat_line"></div>
@@ -31,8 +31,48 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+    <div id="main-view">
+        <div id="timeline-wrapper" onwheel="app.doScroll(event)">
+            <div id="timeline-box" class="fs-inner-wrapper">            
+            <div id="markers">
+                <div id="flatLine"></div>
+                <div v-for="era in eras" class="century-block" :id="era" :style="{width: `${eraWidth}rem`}"><div class="era-label">{{era}}</div></div>
+            </div>
+
+            <div id="gallery">
+                <div v-for="event in galleryEls" :id="event.idString" :class="{eventPos: true, hasImg: event.img, ext: event.loc === 'ext'}" :style="event.styles">
+                    <div class="card">
+                        <div v-if="event.img" class="image">
+                            <img :src="event.img" :alt="event.name">
+                            <div class="openTheater" @click="setTheaterImage(event)"></div>
+                        </div>
+                        <div class="info">
+                            <div class="title">{{event.name}}</div>
+                            <div class="details">
+                                <div class="artist">{{event.artist}}</div>
+                                <div class="period">{{event.period}}</div>    
+                                <div class="year">{{event.year}}</div>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+        <div id="controls">
+            <div id="zoomIn" @click="changeEraZoom(.25)" class="btn"></div>
+            <div id="zoomOut" @click="changeEraZoom(-.25)" class="btn"></div>
+        </div>
     </div>
 
+        <div id="person-summary">
+            <h1>Robert Harris Jr</h1>
+        </div>
+
+    </div>
 
     <div v-show="theaterOn" id="theater">
         <div id="screen" @click="toggleSubs">
