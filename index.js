@@ -23,6 +23,7 @@ var app = new Vue ({
         recordsHTML: null,
         MONTH: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"],
         isMobile: false,
+        dividerHeight: 8,
     },
 
     created() {
@@ -68,7 +69,7 @@ var app = new Vue ({
         },
         scrollToEl(el){
             el.classList.add('focus')
-            el.scrollIntoView({behavior: "smooth", block: "center", inline: "center"})
+            el.scrollIntoView({behavior: "smooth", block: "start", inline: "start"})
             setTimeout( function(){ el.classList.remove('focus') }, 2000)
         },
 
@@ -136,8 +137,7 @@ var app = new Vue ({
                 let monthPos = piece.month * this.yearUnit / 12;
                 let dayPos = piece.day * this.yearUnit / (12 * 31) 
                 obj.netPos = yearPos + monthPos + dayPos;
-                obj.styles = `left: ${piece.netPos}rem; height: ${piece.pos}%`;
-                obj.classes = `art-pos ${piece.loc}`;
+                obj.styles = "";
                 obj.idString = `piece_${array.length}`
 
                 obj.dateFormat = function() {

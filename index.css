@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=La+Belle+Aurore&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Homemade+Apple|La+Belle+Aurore&display=swap');
 :root {
     --blue: skyblue;
 }
@@ -71,7 +70,7 @@ body {
     display: flex;
     height: 100%;
  }
- 
+
 .century-block {
     position: relative;
     align-items: flex-end;;
@@ -90,7 +89,6 @@ body {
 div#flatLine {
     position: absolute;
     width: 100%;
-    bottom: 20%;
     border-top: 1px solid #ddd;
 }
 
@@ -109,32 +107,32 @@ div#flatLine {
     width: .5em;
     z-index: 1;
 }
-.eventPos:not(.ext) {
-    min-height: calc(17% + 15vh);
+.eventPos.hasImg {
+    z-index: 2;
 }
+.eventPos.ext {
+    max-height: 3rem;
+}
+
 .eventPos:hover {
     color: var(--blue);
     border-left-width: 2px;
     z-index: 10;
 }
-.eventPos.ext {
-    max-height: calc(17%);
-}
+
 
 .card {
     border: 1px solid;
-    border-left-width: 0;
     background: #fff;
     position: absolute;
     display: flex;
-    padding-left: 1px;
+    left: 0;
+    top: 0;
+    transform: translate(-1px, -90%);
 }
 .eventPos:hover .card {
     box-shadow: 0 0 5px;
-    padding-left: 0;
-}
-.south .card {
-    bottom: 0;
+    margin-left: -1px;
 }
 
 .card > * {
@@ -193,6 +191,7 @@ div#flatLine {
     color: #000;
     background: #fff;
     width: 2em;
+    height: 2em;
     line-height: 2em;
     font-size: 1.2em;
     text-align: center;
@@ -307,6 +306,7 @@ div#zoomOut::before {
 /* Record Viewer */
 #recordBox {
     font-family: 'La Belle Aurore', cursive;
+    font-family: 'Homemade Apple', cursive;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -314,7 +314,7 @@ div#zoomOut::before {
 }
 
 #recordBox::-webkit-scrollbar {
-    width: .8em;
+    width: .7em;
 }
 #recordBox::-webkit-scrollbar-thumb {
     background: transparent;
@@ -330,33 +330,30 @@ div#zoomOut::before {
 
 #recordBox .record {
     margin: 3em auto;
-    max-width: 700px;
-    padding: 1.6em;
-    font-size: 1.4em;
-    line-height: 1.4;
-    border-radius: .2em;
+    max-width: 48rem;
+    padding: 1.6rem;
+    font-size: 1.2em;
+    line-height: 1.6;
+    font-style: italic;
+    border-radius: .2rem;
     color: #655640;
     box-shadow: inset 0 0em 1em #a05900aa, 0 0 0 #000;
     background: beige;
     background-image: url('images/parch_bg.jpg');
     background-size: cover;
     background-position: center;
-    transform: scale(1);
-    transition: 300ms;
+    transform: scale(1) rotate(-.8deg);
+    transition: 400ms;
 }
 
 #recordBox .record:nth-child(2n) {
     background-image: url('images/parch_bg_flip.jpg');
 }
-#recordBox .record.focus {
-    transform: scale(1.05);
+#recordBox .record.focus, #recordBox .record:hover {
+    transform: scale(1.03) rotate(0);
 }
 #recordBox .record.focus {
-    box-shadow: inset 0 0 0 #000, 0 0 .5em #fff;
-}
-
-.record > * {
-    transform: rotate(-1.2deg);
+    box-shadow: inset 0 0em 1em #a05900aa, 0 0 .5em #fff;
 }
 
 

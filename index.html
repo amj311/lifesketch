@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ARTHC Timeline</title>
+    <title>LifeSketch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css" type="text/css" />
 </head>
@@ -12,12 +12,12 @@
         <div id="timeline-wrapper" onwheel="app.doScroll(event)">
             <div id="timeline-box" class="fs-inner-wrapper">            
             <div id="markers">
-                <div id="flatLine"></div>
+                <div id="flatLine" :style="{bottom: `${dividerHeight}rem`}"></div>
                 <div v-for="era in eras" class="century-block" :id="era" :style="{width: `${eraWidth}rem`}"><div class="era-label">{{era}}</div></div>
             </div>
 
             <div id="gallery">
-                <div v-for="event in galleryEls" :id="event.idString" :class="{eventPos: true, hasImg: event.img, ext: event.type === 'ext'}" :style="event.styles">
+                <div v-for="event in galleryEls" :id="event.idString" :class="{eventPos: true, hasImg: event.img, ext: event.type === 'ext'}" :style="{left: `${event.netPos}rem`, height: `calc( (100% - ${dividerHeight}rem) * ${event.pos/100} + ${dividerHeight}rem)`}">
                     <div class="card">
 
                         <div v-if="event.img" class="image">
@@ -28,7 +28,9 @@
                         <div class="info">
                             <div class="title">{{event.name}}</div>
                             <div class="details">    
-                                <div class="date">{{MONTH[event.month]}}<span v-if="event.day != 0"> {{event.day}}</span>, {{event.year}}</div>
+                                    <div class="place">{{event.loc}}</div>
+                                    <div class="date" v-if="!event.img"><span v-if="event.month">{{MONTH[event.month]}}<span v-if="event.day != 0"> {{event.day}}</span>, </span>{{event.year}}</div>
+                                    <div class="note">{{event.note}}</div>
                             </div>
                         </div>
                         
@@ -61,6 +63,7 @@
             <div v-if="theaterMode == 'img'" id="imageBox" :style="theaterData.bgSrc"></div>
             <div v-show="theaterMode == 'rec'" id="recordBox">
                 <div id="records" v-html="recordsHTML"></div>
+                <div id="toggleFont"></div>
             </div>
         </div>
         <div id="subs" v-if="theaterData.subHTML" v-show="subsOn">
