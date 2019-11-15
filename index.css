@@ -42,7 +42,7 @@ body {
     height:100vh;
 }
 .mobile div#main-view {
-    max-height: calc(100vh - 40px);
+    max-height: calc(100vh - 50px);
 }
 
 #timeline-wrapper {
@@ -305,12 +305,15 @@ div#zoomOut::before {
 
 /* Record Viewer */
 #recordBox {
-    font-family: 'La Belle Aurore', cursive;
-    font-family: 'Homemade Apple', cursive;
     width: 100%;
     height: 100%;
     overflow: auto;
     padding: 0 1.5em;
+}
+
+#recordBox.hand {
+    font-family: 'La Belle Aurore', cursive;
+    font-family: 'Homemade Apple', cursive;
 }
 
 #recordBox::-webkit-scrollbar {
@@ -332,10 +335,19 @@ div#zoomOut::before {
     margin: 3em auto;
     max-width: 48rem;
     padding: 1.6rem;
-    font-size: 1.2em;
-    line-height: 1.6;
-    font-style: italic;
+    line-height: 1.7;
     border-radius: .2rem;
+    transition: 400ms;
+    background: #fff;
+    color: #222;
+    background-position: center;
+}
+
+#recordBox.hand .record {
+    font-style: italic;
+    line-height: 1.6;
+    font-size: 1.2em;
+    text-align: justify;
     color: #655640;
     box-shadow: inset 0 0em 1em #a05900aa, 0 0 0 #000;
     background: beige;
@@ -343,21 +355,105 @@ div#zoomOut::before {
     background-size: cover;
     background-position: center;
     transform: scale(1) rotate(-.8deg);
-    transition: 400ms;
 }
 
-#recordBox .record:nth-child(2n) {
+#recordBox.hand .record:nth-child(2n) {
     background-image: url('images/parch_bg_flip.jpg');
 }
-#recordBox .record.focus, #recordBox .record:hover {
+#recordBox.hand .record.focus, #recordBox.hand .record:hover {
     transform: scale(1.03) rotate(0);
 }
-#recordBox .record.focus {
+#recordBox.hand .record.focus {
     box-shadow: inset 0 0em 1em #a05900aa, 0 0 .5em #fff;
 }
 
+#recordBox:not(.hand) .title {
+    font-weight: bold;
+}
 
-/* QUIZ ALL STYLES */
-.quizAll .info {
-    display: none !important;
+
+
+/* Notes */
+add, que, stop {
+    opacity: .5;
+}
+
+#recordBox.hand add, #recordBox.hand que, #recordBox.hand stop {
+    display: none;
+}
+
+add::before {
+    content: '[\'';
+}
+
+add::after {
+    content: '\']';
+}
+
+
+/* Questions */
+que::before {
+    content: '[?]';
+}
+
+/* Added Stops */
+stop::before {
+    content: '[.]';
+}
+
+/* Removals */
+#recordBox:not(.hand) s {
+    color: red;
+}
+
+/* Afterthoughts */
+#recordBox:not(.hand) aft {
+    color: green;
+}
+#recordBox:not(.hand) aft::before {
+    content: '<';
+}
+#recordBox:not(.hand) aft::after {
+    content: '>';
+}
+
+
+
+
+div#toggleFont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .5rem;
+}
+
+div#toggleFont input {
+    display: none;
+}
+
+div#toggleFont label {
+    line-height: 2rem;
+    font-size: 1.4rem;
+    border: 1px solid;
+    border-radius: .3rem;
+    padding: .2rem .5em 0;
+    display: block;
+    cursor: pointer;
+    background: #00000033;
+    user-select: none;
+}
+.hand div#toggleFont label {
+    font-size: 1.3em;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    :root, body {
+        font-size: .85em;
+    }
 }

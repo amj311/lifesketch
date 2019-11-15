@@ -24,6 +24,7 @@ var app = new Vue ({
         MONTH: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"],
         isMobile: false,
         dividerHeight: 8,
+        handFont: true,
     },
 
     created() {
@@ -113,6 +114,10 @@ var app = new Vue ({
             this.yearUnit += delta;
 
             console.log(document.querySelector('#timeline-box').scrollLeft += delta*450)
+        },
+
+        toggleHandwriting() {
+            this.handFont = !this.handFont;
         }
     },
 

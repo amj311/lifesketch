@@ -60,10 +60,10 @@
 
     <div v-show="theaterOn" id="theater">
         <div id="screen" @click="toggleSubs">
-            <div v-if="theaterMode == 'img'" id="imageBox" :style="theaterData.bgSrc"></div>
-            <div v-show="theaterMode == 'rec'" id="recordBox">
+            <div id="imageBox" v-if="theaterMode == 'img'" :style="theaterData.bgSrc"></div>
+            <div id="recordBox" v-show="theaterMode == 'rec'" :class="{hand: handFont}">
                 <div id="records" v-html="recordsHTML"></div>
-                <div id="toggleFont"></div>
+                <div id="toggleFont"><label for="handFont">Aa</label><input type="checkbox" v-model="handFont" id="handFont"></div>
             </div>
         </div>
         <div id="subs" v-if="theaterData.subHTML" v-show="subsOn">
