@@ -27,7 +27,7 @@ var galleryData = [
         "type":"int",
         "pos":20,
         "img":"images/St_Mary_de_Lode_Church.png",
-        "period":"Northern Baroque",
+        "note":"A photo of the church that Robert and Hannah were married in, according to their marriage certificate.",
     },
     {
         "name":"Church of England Marriage",

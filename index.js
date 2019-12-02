@@ -27,7 +27,7 @@ var app = new Vue ({
         handFont: true,
     },
 
-    created() {
+    async created() {
         this.gallery = galleryData;
 
         fetch('records.html')
@@ -43,12 +43,7 @@ var app = new Vue ({
             obj.bgSrc = `background-image: url(${obj.img})`;
             this.theaterData = obj;
 
-            this.theaterData.subHTML = `
-                <div class="title">${obj.name}</div>
-                <div class="artist">${obj.artist}</div>
-                <div class="period">${obj.period}</div>    
-                <div class="year">${obj.year}</div>
-            `;
+            this.theaterData.hasSubs = true;
 
             this.openTheater();
         },
@@ -56,7 +51,7 @@ var app = new Vue ({
         setTheaterRecord(obj) {
             this.theaterMode = 'rec';
             this.theaterData = {}
-
+            this.theaterData.hasSubs = false;
             
             this.openTheater();
 

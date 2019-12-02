@@ -60,17 +60,23 @@
     </div>
 
     <div v-show="theaterOn" id="theater">
-        <div id="screen" @click="toggleSubs">
-            <div id="imageBox" v-if="theaterMode == 'img'" :style="theaterData.bgSrc"></div>
+        <div id="screen">
+            
+            <div id="exitTheater" @click="closeTheater">&times;</div>
+
+            <div id="imageBox" v-if="theaterMode == 'img'" :style="theaterData.bgSrc"  @click="toggleSubs"></div>
+            
             <div id="recordBox" v-show="theaterMode == 'rec'" :class="{hand: handFont}">
                 <div id="records" v-html="recordsHTML"></div>
                 <div id="toggleFont"><label for="handFont">Aa</label><input type="checkbox" v-model="handFont" id="handFont"></div>
             </div>
         </div>
-        <div id="subs" v-if="theaterData.subHTML" v-show="subsOn">
-            <div id="subHTML" v-html="theaterData.subHTML"></div>
+        <div id="subs" v-if="theaterData.hasSubs" v-show="subsOn">
+            <div v-if="theaterMode == 'img'">
+                <div class="title">{{theaterData.name}}</div>
+                <p class="notes" v-show="theaterData.note">{{theaterData.note}}</p>
+            </div>
         </div>
-        <div id="exitTheater" @click="closeTheater">&times;</div>
     </div>
 
 </div>
