@@ -187,6 +187,13 @@ div#flatLine {
     font-size: 1.1em;
 }
 
+.card .note {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .card .openRecord {
     color: #000;
     background: #fff;
@@ -231,6 +238,7 @@ div#controls .btn {
     cursor: pointer;
     padding: .5em;
     user-select: none;
+    z-index: 15;
 }
 
 div#controls .btn.zoom {

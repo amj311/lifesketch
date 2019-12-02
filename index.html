@@ -9,6 +9,11 @@
 <div id="app"  :class="{ quizAll: isQuizAll, mobile: isMobile}">
 
     <div id="main-view">
+
+        <div id="person-summary">
+            <h1>Robert Harris Jr</h1>
+        </div>
+
         <div id="timeline-wrapper" onwheel="app.doScroll(event)">
             <div id="timeline-box" class="fs-inner-wrapper">            
             <div id="markers">
@@ -27,10 +32,10 @@
                         
                         <div class="info">
                             <div class="title">{{event.name}}</div>
+                            <div class="date" v-if="!event.img"><span v-if="event.month">{{MONTH[event.month]}}<span v-if="event.day != 0"> {{event.day}}</span>, </span>{{event.year}}</div>
                             <div class="details">    
                                     <div class="place">{{event.loc}}</div>
-                                    <div class="date" v-if="!event.img"><span v-if="event.month">{{MONTH[event.month]}}<span v-if="event.day != 0"> {{event.day}}</span>, </span>{{event.year}}</div>
-                                    <div class="note">{{event.note}}</div>
+                                    <div class="note" v-html="event.note"></div>
                             </div>
                         </div>
                         
@@ -51,10 +56,6 @@
             </div>
         </div>
     </div>
-
-        <div id="person-summary">
-            <h1>Robert Harris Jr</h1>
-        </div>
 
     </div>
 

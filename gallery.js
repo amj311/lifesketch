@@ -7,7 +7,7 @@ var galleryData = [
         "type":"int",
         "pos":30,
         "img":"images/letter_crop.png",
-        "period":"Northern Baroque",
+        "recId":"letter"
     },
     {
         "name":"Marriage Record",
@@ -25,7 +25,7 @@ var galleryData = [
         "month":08,
         "day":28,
         "type":"int",
-        "pos":15,
+        "pos":20,
         "img":"images/St_Mary_de_Lode_Church.png",
         "period":"Northern Baroque",
     },
