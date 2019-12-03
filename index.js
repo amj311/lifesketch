@@ -27,14 +27,13 @@ var app = new Vue ({
         isMobile: false,
         dividerHeight: 8,
         handFont: true,
+        showModal: false,
+        notes: [],
+        modalData: {}
     },
 
     async created() {
         this.getEvents()
-
-        fetch('records.html')
-            .then( res => {return res.text()})
-            .then( html => { app.recordsHTML = html })
 
         this.isMobile = window.mobileAndTabletCheck();
     },
@@ -54,7 +53,7 @@ var app = new Vue ({
             this.startYear = Math.floor(this.dateMin / this.eraDuration) * this.eraDuration;
             this.numEras = Math.ceil(range/this.eraDuration) + 2;
 
-            this.minYearUnit = window.innerWidth / (this.eraDuration * this.numEras)
+            this.minYearUnit = (window.innerWidth - 1) / (this.eraDuration * this.numEras)
             this.yearUnit = this.minYearUnit;
         },
     },
@@ -62,6 +61,11 @@ var app = new Vue ({
     methods: {
         getEvents() {
             this.gallery = galleryData;
+            this.notes = notesData;
+
+            fetch('records.html')
+                .then( res => {return res.text()})
+                .then( html => { app.recordsHTML = html })
         },
         setTheaterImage(obj) {
             this.theaterMode = 'img'
@@ -107,12 +111,6 @@ var app = new Vue ({
             this.subsOn = !this.subsOn;
         },
 
-        toggleImgCover() {
-            let 
-            this.coverImg = !this.coverImg;
-            console.log(this.coverImg)
-        },
-
         doScroll(event) {
             var y = event.deltaY;
             let ival = 50;
@@ -130,13 +128,26 @@ var app = new Vue ({
 
         changeEraZoom(delta) {
             this.yearUnit = Math.max(this.minYearUnit, this.yearUnit + delta);
-            console.log(this.minYearUnit, this.yearUnit);
+            // console.log(this.minYearUnit, this.yearUnit);
 
             document.querySelector('#timeline-box').scrollLeft += delta*35
         },
 
         toggleHandwriting() {
             this.handFont = !this.handFont;
+        },
+        findNoteById(id) {
+            return this.notes.filter( n => n.id === id)[0]
+        },
+        openNote(id) {
+            this.showModal = true;
+            let newURL = window.location.href.split('/',3).join('/')+`/#note_${id}`
+            window.location.assign(newURL)
+        },
+        closeNote(){
+            this.showModal = false;
+            let newURL = window.location.href.split('/',3).join('/')+`/#`
+            window.location.assign(newURL)
         }
     },
 
@@ -178,7 +189,8 @@ var app = new Vue ({
 
 
 document.addEventListener('keyup', e => {
-    if (e.keyCode === 27 && app.theaterOn) { app.closeTheater() }
+    if (e.keyCode === 27 && app.showModal) { return app.closeNote() }
+    else if (e.keyCode === 27 && app.theaterOn) { return app.closeTheater() }
 })
 
 document.addEventListener('scroll', app.doScroll)

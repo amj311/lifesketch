@@ -76,15 +76,31 @@
         <div id="subs" v-if="theaterData.hasSubs" v-show="subsOn">
             <div v-if="theaterMode == 'img'">
                 <div class="title">{{theaterData.name}}</div>
-                <p class="notes" v-show="theaterData.note">{{theaterData.note}}</p>
+                <p class="notes" v-show="theaterData.note" v-html="theaterData.note"></p>
             </div>
         </div>
     </div>
+    
+    <div v-for="note in notes" class="modal-wrapper" :id="`note_${note.id}`" :class="{on: showModal}">
+        <a @click="closeNote"></a>
+        <div class="modal">
+            <div class="title-bar">
+                <h2>{{note.title || 'Footnote'}}</h2>
+                <a @click="closeNote">&times;</a>
+            </div>
+            <div class="modal-body">
+                <div v-html="note.body"></div>
+            </div>
+        </div>
+            
+    </div>
 
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="./gallery.js"></script>
-    <script src="./index.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./gallery.js"></script>
+<script src="./notesData.js"></script>
+<script src="./index.js"></script>
 
 </body>
 </html>
