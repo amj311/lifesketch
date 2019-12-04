@@ -23,20 +23,20 @@ var notesData = [
             </ul>
         `
     },
-    {
-        id: "annotation",
-        title: "Annotations",
-        body: `
-            <ul>
-                <li>Move through the timeline by scrolling left or right. Zoom in and out by scrolling up and down, or with the + and - buttons.</li>
-                <li>Events with images can be expanded with the 🔍 button.</li>
-                <li>Click on the 📜 icon to open the journal entry associated with an event.</li>
-                <li>Journals can be viewed in either plain text or an handwritten page by toggling the 'Aa' button in the top left corner.</li>
-                <li>Any menu or view can be exited with the &times; button or the ESC key.</li>
-                <li><note ft onclick="app.openNote('nav')">Textual annotations</note> can be clicked to open the notes panel.</li>
-            </ul>
-        `
-    },
+    // {
+    //     id: "annotation",
+    //     title: "Annotations",
+    //     body: `
+    //         <ul>
+    //             <li>Move through the timeline by scrolling left or right. Zoom in and out by scrolling up and down, or with the + and - buttons.</li>
+    //             <li>Events with images can be expanded with the 🔍 button.</li>
+    //             <li>Click on the 📜 icon to open the journal entry associated with an event.</li>
+    //             <li>Journals can be viewed in either plain text or an handwritten page by toggling the 'Aa' button in the top left corner.</li>
+    //             <li>Any menu or view can be exited with the &times; button or the ESC key.</li>
+    //             <li><note ft onclick="app.openNote('nav')">Textual annotations</note> can be clicked to open the notes panel.</li>
+    //         </ul>
+    //     `
+    // },
     {
         id: "letter_notes",
         title: "The Letter",
