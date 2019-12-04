@@ -367,13 +367,13 @@ div#zoomOut::before {
     background-image: url('images/parch_bg.jpg');
     background-size: cover;
     background-position: center;
-    transform: scale(1) rotate(-.8deg);
+    transform: scale(1) rotate(-.5deg);
 }
 
 #recordBox.hand .record:nth-child(2n) {
     background-image: url('images/parch_bg_flip.jpg');
 }
-#recordBox.hand .record.focus, #recordBox.hand .record:hover {
+#recordBox .record.focus, #recordBox.hand .record:hover {
     transform: scale(1.03) rotate(0);
 }
 #recordBox.hand .record.focus {
@@ -479,7 +479,7 @@ div.modal {
 }
 
 .modal section.focus {
-    background-color: #e0ebff;
+    background-color: #dbf0ff;
 }
 
 
@@ -506,8 +506,8 @@ note[ft] {
 note[ft]:not(:hover)::after {
     content: 'i';
     position: absolute;
-    top: -.7em;
-    right: 0em;
+    top: -.4em;
+    right: 0.1em;
     font-size: 1em;
     text-align: center;
     font-weight: initial;

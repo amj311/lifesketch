@@ -26,7 +26,7 @@ var app = new Vue ({
         MONTH: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"],
         isMobile: false,
         dividerHeight: 8,
-        handFont: true,
+        handFont: false,
         showModal: false,
         notes: [],
         modalData: {}
@@ -146,15 +146,13 @@ var app = new Vue ({
             let elId = 'note_' + shortId;
             let el = document.getElementById(elId)
             if (el) {
-                console.log('scrolling to '+elId, el)
+                // console.log('scrolling to '+elId, el)
                 setTimeout( function(){ app.scrollToEl(el) }, 10)
             }
             else console.log('could not find id '+elId)
         },
         closeNote(){
             this.showModal = false;
-            let newURL = window.location.href.split('/',3).join('/')+`/#`
-            window.location.assign(newURL)
         }
     },
 
