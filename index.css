@@ -313,7 +313,6 @@ div#zoomOut::before {
     padding-right: .2em;
 }
 
-
 /* Record Viewer */
 #recordBox {
     width: 100%;
@@ -358,8 +357,9 @@ div#zoomOut::before {
 
 #recordBox.hand .record {
     font-style: italic;
+    word-spacing: .1em;
     line-height: 1.7;
-    font-size: 1.2em;
+    font-size: 1.1em;
     text-align: justify;
     color: #655640;
     box-shadow: inset 0 0em 1em #a05900aa, 0 0 0 #000;
@@ -424,7 +424,7 @@ div#toggleFont label {
     background: #00000033;
     z-index: 60;
 }
-.modal-wrapper:target {
+.modal-wrapper.on {
     height: 100%;
 }
 
@@ -446,18 +446,15 @@ div.modal {
     transition: 300ms;
 }
 
-.modal-wrapper:target div.modal {
+.modal-wrapper.on div.modal {
     transform: translateY(0)
-}
-
-.modal > div {
-    padding: 1em;
 }
 
 .modal .title-bar {
     border-bottom: 1px solid #eee;
     display:flex;
     align-items: center;
+    padding: 1rem;
 }
 .modal .title-bar a {
     font-size: 2em;
@@ -465,7 +462,7 @@ div.modal {
     cursor: pointer;
     text-decoration: none;
 }
-.modal :first-child {
+.modal .title-bar :first-child {
     flex-grow: 1;
     margin: 0;
 }
@@ -473,26 +470,40 @@ div.modal {
 .modal .modal-body {
     max-height: 50vh;
     overflow-y: auto;
-    font-size: 1.2em;
 }
+
+.modal section {
+    padding: .1rem 1rem;
+    transition: 500ms;
+    background-color: transparent;
+}
+
+.modal section.focus {
+    background-color: #e0ebff;
+}
+
 
 
 /* inline anchors */
-ft-note {
+note[ft] {
     color: inherit;
     text-decoration: underline dotted #00000055;
-    cursor: pointer;
-    display: inline;
-    position: relative;
+    text-decoration-skip-ink: none;
     padding-right: .5em;
 }
 
-ft-note:hover {
+[ft] {
+    cursor: pointer;
+    display: inline;
+    position: relative;
+}
+
+[ft]:hover {
     text-decoration-style: solid;
 }
 
 /* --- Footnote Flag --- */
-ft-note:not(:hover)::after {
+note[ft]:not(:hover)::after {
     content: 'i';
     position: absolute;
     top: -.7em;
@@ -503,37 +514,55 @@ ft-note:not(:hover)::after {
     border-radius: 50%;
     font-style: italic;
     font-family: serif;
+    color: #149dff;
+}
+.hand [ft]:not(:hover)::after {
+    top: -.2em;
+}
+[ft]:not(:hover)::before {
+    top: -.7em;
+    right: 0em;
+    font-size: 0em;
+    border: none;
 }
 
 /* --- Tooltip on hover --- */
-ft-note::before, ft-note:hover::after {
+[ft]::before, [ft]:hover::after {
     font-size: .8rem;
     top: calc(100% + .8em);
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 5;
     position: absolute;
+    opacity: 0;
+}
+.hand [ft]::before, .hand [ft]:hover::after {
+    top: calc(100% + 0em);
 }
 
-ft-note:hover::before {
+[ft]::before {
+    content: "Click for more information.";    
+}
+
+[ft]::before {
+    opacity: 1;
     position: absolute;
-    content: "Click for more information.";
-    left: 0;
     background-color: #fff;
     border-radius: 0.5em;
     border: 1px solid #00000022;
     box-shadow: 0 0 0.3em #00000022;
     color: initial;
-    padding: .5em;
-    text-align: left;
+    padding: .5em .8em;
+    text-align: center;
     font-family: 'Roboto',sans-serif;
     font-style: initial;
     font-weight: initial;
-    line-height: 1.3;.
-    +
+    line-height: 1.3;
+    width: 10em;
 }
 
-ft-note:hover::after {
-	/* margin-top: 1em; */
-    left: 1em;
-    display: block;
+[ft]:hover::after {
+    opacity: 1;
     border: solid transparent;
     filter: drop-shadow(0 -.1em 0em #00000011);
     content: "";
@@ -542,7 +571,7 @@ ft-note:hover::after {
     pointer-events: none;
     border-bottom-color: #fff;
     border-width: .7em;
-    margin-top: -1.3em;
+    margin-top: -1.2em;
 }
 
 
@@ -551,32 +580,26 @@ ft-note:hover::after {
 
 
 /* Notes */
-add, que, stop {
-    opacity: .5;
+add, que {
+    color: #bbb;
 }
-
 #recordBox.hand add, #recordBox.hand que, #recordBox.hand stop {
     display: none;
 }
-
-add::before {
-    content: '[\'';
+add[ft]::before {
+    content: "Added by the editor to increase readability."
+}
+que[ft]::before {
+    content: "Added by the editor to mark places of questionable transcription."
+}
+aft[ft]::before {
+    content: "Written in the margins of the original document."
 }
 
-add::after {
-    content: '\']';
+s[ft]::before {
+    content: "A correction made on the original document."
 }
 
-
-/* Questions */
-que::before {
-    content: '[?]';
-}
-
-/* Added Stops */
-stop::before {
-    content: '[.]';
-}
 
 /* Removals */
 #recordBox:not(.hand) s {
@@ -586,12 +609,6 @@ stop::before {
 /* Afterthoughts */
 #recordBox:not(.hand) aft {
     color: inherit;
-}
-#recordBox:not(.hand) aft::before {
-    content: '<';
-}
-#recordBox:not(.hand) aft::after {
-    content: '>';
 }
 
 

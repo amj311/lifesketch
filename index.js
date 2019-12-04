@@ -99,6 +99,7 @@ var app = new Vue ({
         },
 
         openTheater() {
+            this.closeNote()
             this.theaterOn = true;
             this.subsOn = true;
         },
@@ -139,10 +140,16 @@ var app = new Vue ({
         findNoteById(id) {
             return this.notes.filter( n => n.id === id)[0]
         },
-        openNote(id) {
+        openNote(shortId) {
             this.showModal = true;
-            let newURL = window.location.href.split('/',3).join('/')+`/#note_${id}`
-            window.location.assign(newURL)
+
+            let elId = 'note_' + shortId;
+            let el = document.getElementById(elId)
+            if (el) {
+                console.log('scrolling to '+elId, el)
+                setTimeout( function(){ app.scrollToEl(el) }, 10)
+            }
+            else console.log('could not find id '+elId)
         },
         closeNote(){
             this.showModal = false;
@@ -174,10 +181,6 @@ var app = new Vue ({
                 obj.netPos = yearPos + monthPos + dayPos;
                 obj.styles = "";
                 obj.idString = `piece_${array.length}`
-
-                obj.dateFormat = function() {
-                    
-                }
 
                 array.push(obj)
             })

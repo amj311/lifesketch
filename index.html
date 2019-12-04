@@ -81,15 +81,18 @@
         </div>
     </div>
     
-    <div v-for="note in notes" class="modal-wrapper" :id="`note_${note.id}`" :class="{on: showModal}">
+    <div class="modal-wrapper" :class="{on: showModal}">
         <a @click="closeNote"></a>
         <div class="modal">
             <div class="title-bar">
-                <h2>{{note.title || 'Footnote'}}</h2>
+                <h2>Project Notes</h2>
                 <a @click="closeNote">&times;</a>
             </div>
             <div class="modal-body">
-                <div v-html="note.body"></div>
+                <section :id="`note_${note.id}`" v-for="note in notes">
+                    <h3>{{note.title || 'Footnote'}}</h3>
+                    <div v-html="note.body"></div>
+                </section>
             </div>
         </div>
             
