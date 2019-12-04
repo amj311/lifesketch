@@ -14,7 +14,7 @@ var notesData = [
         title: "Navigation",
         body: `
             <ul>
-                <li>Move through the timeline by scrolling left or right. Zoom in and out by scrolling up and down, or with the + and - buttons.</li>
+                <li>Move through the timeline by scrolling left or right. Zoom in and out by scrolling up and down, or with the &plus; and &minus; buttons.</li>
                 <li>Events with images can be expanded with the 🔍 button.</li>
                 <li>Click on the 📜 icon to open the journal entry associated with an event.</li>
                 <li>Journals can be viewed in either plain text or an handwritten page by toggling the 'Aa' button in the top left corner.</li>

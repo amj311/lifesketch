@@ -253,7 +253,7 @@ div#zoomIn::before {
 }
 
 div#zoomOut::before {
-    content: '-';
+    content: '\2212';
 }
 
 
@@ -473,7 +473,7 @@ div.modal {
 }
 
 .modal section {
-    padding: .1rem 1rem;
+    padding: 1rem 1rem;
     transition: 500ms;
     background-color: transparent;
 }
@@ -481,7 +481,10 @@ div.modal {
 .modal section.focus {
     background-color: #dbf0ff;
 }
-
+.modal section > * {
+    max-width: 55rem;
+    margin: 0 auto;
+}
 
 
 /* inline anchors */
