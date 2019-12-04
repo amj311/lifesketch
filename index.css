@@ -492,7 +492,7 @@ note[ft] {
     color: inherit;
     text-decoration: underline dotted #00000055;
     text-decoration-skip-ink: none;
-    padding-right: .5em;
+    padding-right: .4em;
 }
 
 [ft] {
@@ -508,16 +508,16 @@ note[ft] {
 /* --- Footnote Flag --- */
 note[ft]:not(:hover)::after {
     content: 'i';
-    position: absolute;
-    top: -.4em;
-    right: 0.1em;
+    vertical-align: super;
     font-size: 1em;
-    text-align: center;
+    line-height: initial;
     font-weight: initial;
     border-radius: 50%;
     font-style: italic;
     font-family: serif;
     color: #149dff;
+    position: absolute;
+    right: 0;
 }
 .hand [ft]:not(:hover)::after {
     top: -.2em;
