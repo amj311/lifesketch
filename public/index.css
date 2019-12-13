@@ -235,7 +235,7 @@ div#flatLine {
 .eventPos:hover .openTheater {
     display: block;
 }
-.isMobile .openTheater {
+.mobile .openTheater {
     top: .2em;
     right: .2em;
     font-size: 1em;
