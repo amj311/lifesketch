@@ -276,6 +276,12 @@ div#flatLine {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    margin-top: 1em;
+}
+.card .note::before {
+    content: 'Notes:';
+    font-style: italic;
+    margin-right: .5em;
 }
 .card .note > * {
     display: inline-block;
@@ -433,13 +439,14 @@ textarea#note {
     height: 100vh;
     background: #00000088;
     z-index: 50;
+    overflow: hidden;
 }
 #screen {
     position: relative;
     display: flex;
     height: 100%;
     width: 100%;
-    padding: 2em;
+    padding: 2em 2em 10em;
     filter: drop-shadow(0 0 5px #000000aa);
 }
 #imageBox {
@@ -456,10 +463,15 @@ textarea#note {
     bottom: 0;
     left: 0;
     width: 100%;
+    transform: translateY(calc(100% - 7em));
     background: #000000aa;
     padding: 1.5em;
     font-size: 1.1em;
-    line-height: 1.7;
+    line-height: 1.6;
+    transition: 200ms;
+}
+#subs.on, #subs:hover {
+    transform: translateY(0);
 }
 div#subs > div {
     max-width: 55em;

@@ -240,7 +240,7 @@ var app = new Vue ({
         openTheater() {
             this.closeNote()
             this.theaterOn = true;
-            this.subsOn = true;
+            this.subsOn = false;
         },
 
         closeTheater() {

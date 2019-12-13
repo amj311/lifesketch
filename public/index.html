@@ -35,7 +35,7 @@
                                 <div class="date" v-if="!event.img">{{event.dateStr}}</div>
                                 <div class="details">    
                                         <div class="place">{{event.loc}}</div>
-                                        <div class="note" v-html="event.note"></div>
+                                        <div class="note" v-if="event.note" v-html="event.note"></div>
                                 </div>
                             </div>
                             
@@ -209,9 +209,11 @@
                 <div id="toggleFont"  v-show="theaterMode == 'rec'" :class="{hand: handFont}"><label for="handFont">Aa</label><input type="checkbox" v-model="handFont" id="handFont"></div>
 
             </div>
-            <div id="subs" v-if="theaterData.hasSubs" v-show="subsOn">
+            <div id="subs" v-if="theaterData.hasSubs" :class="{on: subsOn}">
                 <div v-if="theaterMode == 'img'">
                     <div class="title">{{theaterData.name}}</div>
+                    <div class="date" v-if="!theaterData.img">{{theaterData.dateStr}}</div>
+                    <div class="place">{{theaterData.loc}}</div>
                     <p class="notes" v-show="theaterData.note" v-html="theaterData.note"></p>
                 </div>
             </div>
