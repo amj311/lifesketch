@@ -202,8 +202,8 @@ var app = new Vue ({
             this.startYear = Math.floor(this.dateMin / this.eraDuration) * this.eraDuration;
             this.numEras = Math.ceil(range / this.eraDuration) + 2;
 
-            this.minYearUnit = (window.innerWidth - 1) / (this.eraDuration * this.numEras)
-            this.yearUnit = this.minYearUnit * 1.3;
+            this.minYearUnit = (window.innerWidth - 1) / (this.eraDuration * this.numEras) * 1.25
+            this.yearUnit = this.minYearUnit;
         },
 
         setTheaterImage(shortId) {
