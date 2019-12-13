@@ -49,8 +49,9 @@
         
             <div id="controls">
                 <div id="zoomBox">
-                    <div id="zoomIn" @click="handleButtonZoom(5)" class="btn zoom"></div>
-                    <div id="zoomOut" @click="handleButtonZoom(-5)" class="btn zoom"></div>        
+                    <div id="zoomIn" @click="handleButtonZoomIn()" class="btn zoom"></div>
+                    <div id="resetZoom" v-if="yearUnit > minYearUnit" @click="resetZoom()" class="btn zoom"></div>
+                    <div id="zoomOut" @click="handleButtonZoomOut()" class="btn zoom"></div>        
                 </div>
                 <div id="addEventBox">
                     <div v-if="isAdmin" id="addEvent" @click="openAddForm" class="btn">+ Add Event</div>

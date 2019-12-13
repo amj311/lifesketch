@@ -369,6 +369,10 @@ div#zoomIn::before {
     content: '+';
 }
 
+div#resetZoom::before {
+    content: '\00D7';
+}
+
 div#zoomOut::before {
     content: '\2212';
 }

@@ -252,7 +252,7 @@ var app = new Vue ({
         },
 
         handleTimelineScroll(e) {
-            var y = e.deltaY;
+            var y = -e.deltaY;
             let ival = 50;
 
             if (y != 0 && !this.zoomTimeout) {
@@ -260,6 +260,7 @@ var app = new Vue ({
                     let oldUnit = this.yearUnit;
 
                     let delta = y / 500;
+                    console.log(delta)
                     this.changeEraZoom(delta)
 
                     // modify scroll position relative to mouse
@@ -276,6 +277,15 @@ var app = new Vue ({
             }
         },
 
+        handleButtonZoomIn(){
+            this.handleButtonZoom(0.4)
+        },
+        resetZoom(){
+            this.yearUnit = this.minYearUnit;
+        },
+        handleButtonZoomOut(){
+            this.handleButtonZoom(-0.4)
+        },
         handleButtonZoom(delta){
             let oldUnit = this.yearUnit;
             this.changeEraZoom(delta)
@@ -288,7 +298,7 @@ var app = new Vue ({
         },
 
         changeEraZoom(delta) {
-            this.yearUnit = Math.max(this.minYearUnit, this.yearUnit + delta);
+            this.yearUnit = Math.max(this.minYearUnit, this.yearUnit * (1 + delta));
             // console.log(this.minYearUnit, this.yearUnit);
         },
 
