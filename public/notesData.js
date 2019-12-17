@@ -46,14 +46,14 @@ var notesData = [
     elId: "style",
     title: "Writing for Robert",
     body: `
-        <p>My goal with this project was to tell Robert's story in his voice, since there are only second-hand accounts of his life available. When the project began, I could only guess how he may have written based on literature and some small understanding of English culture. When I found <note ft onclick="app.openNote('letter_notes')">the leter he wrote to Hannah</note> I was able to study it and reproduce some elements of his language and writing style. While you read the journal entries, take the time to note some of these nuances:</p>
+        <p>My goal with this project was to tell Robert's story in his voice, since there are only second-hand accounts of his life available. When the project began, I could only guess how he may have written based on literature and some small understanding of English culture. When I found <note ft onclick="app.openNote('letter_notes')">the leter he wrote to Hannah</note> I was able to study it and reproduce some elements of his language and writing style. The lack of punctuation seems very consistent with writign at the time, as well as some variants in orthography. Robert also has a curious pattern for capitalizing nouns. It is unclear how many of these nuances are a result of Robert's "scribbling pretty fast" to write the letter, but I believe that the majority are representative of the era. While you read the journal entries, take the time to note some of these nuances:</p>
         <ul>
-            <li><b>Structural:</b> part to whole relations; language relations within the text.</li>
-            <li><b>Generic:</b> cross-textual relations; language relations with previous texts; genre relations. </li>
-            <li><b>Medial:</b> relation of the text to its medium. This type of relation can be found regarding the letter to Hannah. Because of the nature of the letter, certain edits and explanations were made in this publication. The letter also helped to influence the writing style for Robert's fictional journal entries.</li>
-            <li><b>Interpersonal:</b> relation of the texts to persons: reader, author, character, Deity, etc.</li>
-            <li><b>Referential:</b> relation of the text to nature and the supernatural; real world and other world; signifier and signified.</li>
-            <li><b>Silential:</b> relation of the text to what is not said; taboo; pause; omission; limitations of language.</li>
+            <li>Lower case 'i' for a first-person pronoun, except at the beginning of sentences. In the letter, very few were capitalized until the very end and the pattern is unclear. For the journals I decided to consistenly capitalize only those at the beginning of sentences.</li>
+            <li>Capitalization of various non-pronoun nouns.</li>
+            <li>Consistent double 'ee' in words 'we' and 'me'.</li>
+            <li>The dropping of the repeated consonant in words like "affectionate" and "disappointed".</li>
+            <li>Extra 'e' on the end of 'dear'.</li>
+            <li>Changing '-ned' to '-nd' in words like 'turned'.</li>
         </ul>
     `
 },

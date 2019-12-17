@@ -450,9 +450,13 @@ textarea#note {
     display: flex;
     height: 100%;
     width: 100%;
-    padding: 2em 2em 10em;
+    padding: 2em;
     filter: drop-shadow(0 0 5px #000000aa);
 }
+#theater.img #screen {
+    padding: 2em 2em 10em;
+}
+
 #imageBox {
     position: relative;
     width: 100%;

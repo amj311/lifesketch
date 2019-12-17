@@ -85,6 +85,13 @@
                                 <input id="tag" v-model="newEvent.elId">
                             </p>
                             <p>
+                                <label for="recId">Link to Record</label><br>
+                                <input id="recId" list="recIdList" v-model="newEvent.recId">
+                                <datalist id="recIdList">
+                                    <option v-for="option in getOptionsFor(records, 'elId')" :value="option"></option>
+                                </datalist>
+                            </p>
+                            <p>
                                 <label for="year">Year</label><br>
                                 <input id="year" v-model="newEvent.year" @change="handleChangeAddYear" type="number">        
                             </p>
@@ -145,6 +152,13 @@
                                 <input id="tag" v-model="editEvent.elId">
                             </p>
                             <p>
+                                <label for="recId">Link to Record</label><br>
+                                <select id="recId" list="recIdList" v-model="editEvent.recId">
+                                <datalist id="recIdList">
+                                    <option v-for="option in getOptionsFor(records, 'elId')" :value="option"></option>
+                                </datalist>
+                            </p>
+                            <p>
                                 <label for="year">Year</label><br>
                                 <input id="year" v-model="editEvent.year" @change="setZoom" type="number">        
                             </p>
@@ -189,7 +203,7 @@
 
         </div>
 
-        <div v-show="theaterOn" id="theater">
+        <div v-show="theaterOn" id="theater" :class="`${theaterMode}`">
             <div id="screen">
                 
                 <div id="exitTheater" @click="closeTheater">&times;</div>

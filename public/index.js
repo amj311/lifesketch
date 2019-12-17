@@ -260,7 +260,6 @@ var app = new Vue ({
                     let oldUnit = this.yearUnit;
 
                     let delta = y / 500;
-                    console.log(delta)
                     this.changeEraZoom(delta)
 
                     // modify scroll position relative to mouse
