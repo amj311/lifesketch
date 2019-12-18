@@ -11,8 +11,7 @@
         <div id="main-view">
 
             <div id="person-summary">
-                <div class="profile-img">
-                    <img src="./images/Robert Harris Jr.jpg">
+                <div class="profile-img" style="background-image: url(./images/Robert_Harris_Jr.jpg)">
                 </div>
                 <h1>Robert Harris Jr</h1>
             </div>
@@ -156,7 +155,7 @@
                             </p>
                             <p>
                                 <label for="recId">Link to Record</label><br>
-                                <select id="recId" list="recIdList" v-model="editEvent.recId">
+                                <input id="recId" list="recIdList" v-model="editEvent.recId">
                                 <datalist id="recIdList">
                                     <option v-for="option in getOptionsFor(records, 'elId')" :value="option"></option>
                                 </datalist>

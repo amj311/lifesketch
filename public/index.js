@@ -27,7 +27,7 @@ var app = new Vue ({
         MONTH: ["No Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "Novemeber", "December"],
         isMobile: false,
         dividerHeight: 8,
-        handFont: false,
+        handFont: true,
         showModal: false,
         notes: [],
         modalData: {},

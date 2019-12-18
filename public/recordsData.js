@@ -116,8 +116,8 @@ var recordsData = [
 
     {
         type:`record`,
-        elId:`conversion`,
-        title:`11 June 1840`,
+        elId:`ordination`,
+        title:`14 June 1840`,
         body:`
             <p>Today there was a conference held in <note ft onclick="app.setTheaterImage('gadfield')">the chapel at Gadfield Elm</note> Brother Woodruff and another man laid their hands upon my head and made me a priest in this new church. I never felt a stronger spirit in my life! The Lord truly as revealed light and truth unto us</p>
        `

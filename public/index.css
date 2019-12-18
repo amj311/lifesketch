@@ -91,6 +91,31 @@ body {
     max-height: calc(100vh - 50px);
 }
 
+
+
+
+.profile-img {
+    width: 4rem;
+    height: 4rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 100vw;
+}
+
+div#person-summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+div#person-summary > * {
+    margin: 1em;
+}
+
+
+
+
 #timeline-wrapper {
     position: relative;
     width:  100%;
