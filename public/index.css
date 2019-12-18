@@ -808,7 +808,7 @@ s[ft]::before {
 
 
 /* Removals */
-#recordBox:not(.hand) s {
+#recordBox:not(.hand) s, .modal-body s {
     color: red;
 }
 

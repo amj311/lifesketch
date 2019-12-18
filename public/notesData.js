@@ -55,6 +55,7 @@ var notesData = [
             <li>Extra 'e' on the end of 'dear'.</li>
             <li>Changing '-ned' to '-nd' in words like 'turned'.</li>
         </ul>
+        <p>The letter also helped me to craft the journal entries to <em>look</em> like Robert had written them. I analyzed his handwriting and found a font that matches closely - if not perfectly - and adjusted word spacing, angle, and line-height accordingly. You can read the journals in "handwritten" mode by toggling the button to the top left.
     `
 },
 {
@@ -63,6 +64,15 @@ var notesData = [
     title: "The Letter",
     body: `
         <p>Finding this letter was pivotal to writing journal entries through Robert's voice. It is the <i>only</i> text I could locate that is in his own hand, let alone his own words. Note the lack of full stops, the typographical variations, and that Robert does not often capitalize the first-person pronoun 'i'. These and other nuances in Robert's writing helped to shape the journal entries I created for him.</p>
+        <p>To help readers decipher the letter, I have added a few inline annotations and marks:</p>
+        <ul>
+            <li><aft ft>&lt;These notes&gt;</aft> are words or pieces of words that were written in the margins of the original document.</li>
+            <li><s ft>These notes</s> indicate corrections that were made by Robert at the time of writing.</li>
+            <li><add ft>[These notes]</add> have been added to offer correct spelling for some of the more difficult words to decipher.</li>
+            <li><add ft>[.]</add> - The most probable end of one sentence and beginning of another.</li>
+            <li><add ft>[?]</add> - Marks places where the transcription is unsure. Refer to the original document.</li>
+            <li><add ft>...</add> - Some portion of the letter were completely illegible because of extra writing on top of the text in the lower right corner. Refer to the original document.</li>
+        </ul>
     `
 }
 ]
